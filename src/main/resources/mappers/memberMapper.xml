@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+
+CREATE TABLE MEMBERS
+(
+    mem_uid            NUMBER           NOT NULL, 
+    uesrid         VARCHAR2(20)     NOT NULL UNIQUE, 
+    userpw         VARCHAR2(20)     NOT NULL, 
+    name           VARCHAR2(20)     NOT NULL, 
+    email          VARCHAR2(100)    NOT NULL, 
+    phone          VARCHAR2(20)     NOT NULL, 
+    zipcode        VARCHAR2(20)     NOT NULL, 
+    address1       VARCHAR2(100)    NOT NULL, 
+    address2       VARCHAR2(100)    NOT NULL, 
+    signupdate    DATE             NOT NULL, 
+    status         CHAR(1)          NOT NULL, 
+
+    CONSTRAINT MEMBERS_PK PRIMARY KEY (mem_uid)
+);
+ -->
+ 
+ 
+ 
+<mapper namespace="memberMapper">
+	 
+	<!-- 중복체크 -->
+	
+	<!-- 메일 중복 체크 -->
+	
+	<!-- 회원 가입 -->
+	<insert id="register" parameterType="com.lec.dto.memberDTO">
+		INSERT INTO MEMBERS(mem_uid, userid, userpw, name, email, phone, zipcode, 
+							address1, address2, signupdate, status)
+			 VALUES(MEMBERS_SEQ.NEXTVAL, #{userid}, #{userpw}, #{name}, #{email}, #{phone}, #{zipcode}, 
+							#{address1}, #{address2}, SYSDATE, '0')
+	</insert>
+	
+	<!-- 로그인 -->
+
+	
+	<!-- 회원정보수정 -->
+	
+
+	<!-- 회원 정보 -->
+
+
+
+	
+</mapper>
+
