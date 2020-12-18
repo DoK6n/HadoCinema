@@ -1,0 +1,81 @@
+
+.star{
+  background-image: url("../images/star.png");
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+  background-color : white;
+  border : 0;
+}
+
+.star.on{
+  background-image: url("../images/staron.png");	
+}
+
+textarea {
+    width: 100%;
+    line-height: 1.5;
+    box-sizing: border-box;
+    padding: 13px 18px;
+    border: 1px solid #DDD;
+    resize: none;
+    font-size: 14px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.bx_score {
+    padding: 10px 0 15px;
+    color: #000;
+    text-align: center;
+}
+
+
+.tit_movie{
+	    width: 100%;
+	
+    display: block;
+    margin-bottom: 10px;
+    font-size: 22px;
+    text-align: center;
+}
+
+
+
+
+
+.byte {
+    display: block;
+    margin-top: 8px;
+    font-size: 15px;
+    color: #888;
+    text-align: right;
+}
+
+.btn_close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 19px;
+    height: 19px;
+    border: none;
+    text-indent: -9999em;
+    /* background: transparent url(../../Content/images/icon/close_19.png)no-repeat 0 0; */
+    background: transparent url(../../Content/images/icon/close_19.png) no-repeat 0 0;
+    outline-color: black;
+}
+.tit {
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.modal-title{
+    display: block;
+    font-size: 15px;
+}

@@ -1,0 +1,67 @@
+body{
+    margin-top:20px;
+    background:#DCDCDC;
+}
+
+#heart{
+  background-image: url("../images/heart.png");
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+  background-color : white;
+  border : 0;
+}
+
+.heart.on{
+  background-image: url("../images/hearton.png");	
+}
+
+
+.card-box {
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+
+
+.project-box {
+    position: relative;
+    overflow: auto;
+    word-wrap: break-word;
+    height:270px;
+}
+
+
+
+.font-13 {
+    font-size: 13px!important;
+}
+.font-15 {
+    font-size: 15px!important;
+}
+.font-20 {
+    font-size: 20px!important;
+    font-style: bold!important;
+}
+
+.star{
+  background-image: url("../images/staron.png");	
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  background-color : white;
+  border : 0;
+}
+
+
+.star.half{
+    background-image: url("../images/starhalf.png");	
+}
+
+
