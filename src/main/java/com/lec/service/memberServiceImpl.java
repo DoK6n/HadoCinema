@@ -1,8 +1,5 @@
 package com.lec.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -32,6 +29,11 @@ public class memberServiceImpl implements memberService{
 	}
 	
 	//로그인
+	@Override
+	public memberDTO login(memberDTO dto){
+		logger.debug("login :: service -> dao 요청");
+		return dao.login(dto);
+	}
 	
 	//회원정보수정
 	

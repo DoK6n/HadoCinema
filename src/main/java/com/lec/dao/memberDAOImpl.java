@@ -33,6 +33,15 @@ public class memberDAOImpl implements memberDAO{
 	}
 	
 	//로그인
+	@Override
+	public memberDTO login(memberDTO dto){
+		logger.debug("dao -> mapper 데이터 요청 :: login");
+		memberDTO loginInfo = new memberDTO();
+		loginInfo = sqlSession.selectOne("login", dto);
+		logger.info("login mapper -> [" + loginInfo.getName()+"]");
+		
+		return loginInfo;
+	}
 	
 	//회원정보 수정
 	

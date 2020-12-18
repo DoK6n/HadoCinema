@@ -12,5 +12,9 @@ public class MainController {
 		return "main/main";
 	}
 	
+	@RequestMapping("/testheader")
+	public String testheader() {
+		return "main/testheader";
+	}
 	
 }

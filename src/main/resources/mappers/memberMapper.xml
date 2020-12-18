@@ -40,7 +40,11 @@ CREATE TABLE MEMBERS
 	</insert>
 	
 	<!-- 로그인 -->
-
+	<select id="login" resultType="com.lec.dto.memberDTO">
+		SELECT userid, name, email, phone, 
+				zipcode, address1, address2, signupdate, status
+	  			FROM MEMBERS WHERE userid = #{userid} AND userpw = #{userpw}
+	</select>
 	
 	<!-- 회원정보수정 -->
 	
