@@ -3,22 +3,6 @@ body{
     background:#DCDCDC;
 }
 
-#heart{
-  background-image: url("../images/heart.png");
-  background-size: auto 100%;
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  text-indent: -9999px;
-  cursor: pointer;
-  background-color : white;
-  border : 0;
-}
-
-.heart.on{
-  background-image: url("../images/hearton.png");	
-}
-
 
 .card-box {
     padding: 20px;
@@ -49,7 +33,7 @@ body{
 }
 
 .star{
-  background-image: url("../images/staron.png");	
+  background-image: url("../image/staron.png");	
   background-size: auto 100%;
   width: 30px;
   height: 30px;
@@ -61,7 +45,7 @@ body{
 
 
 .star.half{
-    background-image: url("../images/starhalf.png");	
+    background-image: url("../image/starhalf.png");	
 }
 
 
