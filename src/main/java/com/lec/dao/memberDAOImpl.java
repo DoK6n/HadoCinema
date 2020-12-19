@@ -44,6 +44,16 @@ public class memberDAOImpl implements memberDAO{
 	}
 	
 	//회원정보 수정
+	@Override
+    public void updateMemInfo(memberDTO dto) {
+		logger.debug("dao -> mapper 데이터 수정 :: updateMemInfo");
+		sqlSession.update("updateMemInfo", dto); 
+		logger.debug("updateMemInfo mapper -> ");
+		
+		logger.info(">> 받은 파라미터 dto 값 [" + dto.getName() + "]");
+    }
+	
+	//회원정보 수정
 	
 	
 	//아이디찾기

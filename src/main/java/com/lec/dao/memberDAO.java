@@ -14,6 +14,8 @@ public interface memberDAO {
 		//로그인
 		public memberDTO login(memberDTO dto);
 
+		public void updateMemInfo(memberDTO dto);
+
 		//회원정보수정
 
 //		//아이디찾기

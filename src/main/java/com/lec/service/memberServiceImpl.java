@@ -36,6 +36,11 @@ public class memberServiceImpl implements memberService{
 	}
 	
 	//회원정보수정
+	@Override
+	public void updateMemInfo(memberDTO dto){
+		logger.debug("updateMemInfo :: service -> dao 요청");
+		dao.updateMemInfo(dto);
+	}
 	
 //	//아이디찾기
 //	//비밀번호찾기
