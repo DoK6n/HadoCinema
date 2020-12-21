@@ -49,8 +49,23 @@ public class ReviewController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
-		return  "/review/reviewLists";
-		
+		return  "/review/reviewLists";		
 	}
+
+	// 크롤링 리뷰 게시판 목록 조회
+	@RequestMapping(value =  "/review/reviewLists2", method = RequestMethod.GET)
+	public String listC(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
+		
+		model.addAttribute("list", service.listC(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCountC(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return  "/review/reviewLists2";		
+	}
+	
 }	
 

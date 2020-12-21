@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review2Mapper">
+	<insert id="insertC">
+		INSERT INTO REVIEW2(reviewUid2, rMovieName2,  reviewContent2, reviewGrade2) 
+		VALUES(REVIEW2_SEQ.nextval, #{rMovieName2}, #{reviewContent2}, #{reviewGrade2})
+    </insert>
+	
+	
+	<select id="listPageC" resultType="com.lec.dto.ReviewDTO2" parameterType="com.lec.dto.SearchCriteria">
+			SELECT  reviewUid2, 
+		        rMemId2, 
+		        rMovieName2,
+		        reviewContent2, 
+		        reviewGrade2,
+		        reviewHeart2,
+		        reviewRegdate2
+		 FROM ( 
+		        SELECT reviewUid2, 
+		               rMemId2, 
+		               rMovieName2, 
+		               reviewContent2, 
+		               reviewGrade2,
+		               reviewHeart2,
+		               reviewRegdate2,
+		               ROW_NUMBER() OVER(ORDER BY reviewUid2 DESC) AS RNUM
+		         FROM REVIEW2
+		         WHERE 1=1 
+		         	<include refid="searchC"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY reviewUid2 DESC
+	</select>
+	
+	<select id="listCountC" parameterType="com.lec.dto.SearchCriteria" resultType="int">
+		SELECT COUNT(reviewUid2) FROM REVIEW2 WHERE 1=1 <include refid="searchC"></include> AND reviewUid2 > 0
+	</select>
+	
+	<sql id="searchC">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND rMovieName2 LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND reviewContent2 LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
+	
+
+</mapper>
+
+  
