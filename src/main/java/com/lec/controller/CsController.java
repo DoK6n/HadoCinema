@@ -33,7 +33,7 @@ public class CsController {
 		
 		service.write(csDTO);
 		
-		return "redirect:/main/main";
+		return "redirect:/main";
 	}
 
 	

@@ -45,7 +45,7 @@
       <li class="col-md-1 dropdown hdmenu menu">
         <a href="">리뷰</a>
         <ul class="justify-content-center dropdown-menu sub sb1">
-          <li><a href="" class="grey-text submenu">리뷰 크롤링</a></li>
+          <li><a href="${pageContext.request.contextPath }/review/reviewLists2" class="grey-text submenu">리뷰 크롤링</a></li>
           <c:if test="${not empty login}">
           	<li><a href="${pageContext.request.contextPath }/review/reviewLists" class="grey-text submenu">해도시네마 리뷰</a></li>
           	<a href="${pageContext.request.contextPath }/review/writeReview" class="grey-text submenu" data-toggle="modal" data-target="#myModal">리뷰 작성</a>
@@ -55,16 +55,16 @@
       
       <li class="col-md-1 dropdown hdmenu menu">
         <a href="">고객센터</a>
-        <ul class="justify-content-center dropdown-menu sub sb3">
-          <li><a href="">1:1 문의하기</a></li>
+        <ul class="justify-content-center dropdown-menu sub sb2">
+          <li><a href="${pageContext.request.contextPath }/cs/qanda" class="grey-text submenu">1:1 문의하기</a></li>
         </ul>
       </li>
 
       <c:if test="${not empty login and login eq 'admin' }">
       <li class="col-md-1 dropdown hdmenu menu">
         <a href="">관리자</a>
-        <ul class="justify-content-center dropdown-menu sub sb4">
-          <li><a href="" class="grey-text submenu">1:1문의 답변하기</a></li>
+        <ul class="justify-content-center dropdown-menu sub sb3">
+          <li><a href="${pageContext.request.contextPath }/mypage/qandaList2" class="grey-text submenu">1:1문의 답변하기</a></li>
         </ul>
       </li>       
       </c:if>

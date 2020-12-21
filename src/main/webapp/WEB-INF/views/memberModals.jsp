@@ -19,14 +19,6 @@ aria-hidden="true">
               LOGIN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel5" role="tab"><i class="fas fa-user mr-1"></i>
-              ID찾기</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel6" role="tab"><i class="fas fa-user mr-1"></i>
-              PW찾기</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
               JOIN</a>
           </li>
@@ -64,70 +56,6 @@ aria-hidden="true">
 
           </div>
           <!--/.Panel 7-->
-
-          <!--Panel 6-->
-          <div class="tab-pane fade in show" id="panel6" role="tabpanel">
-
-            <!--Body-->
-            <div class="modal-body mb-1">
-            <form action="" method="post" name="findPwfrm" id="findPwfrm">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-user prefix"></i>
-                <input type="text" id="idFI" class="form-control form-control-sm validate">
-                <label>아이디</label>
-              </div>
-
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="emailFI" class="form-control form-control-sm validate">
-                <label>이메일</label>
-              </div>
-              <div class="text-center mt-2">
-                <button class="btn btn-info">임시비밀번호 발송 <i class="fas fa-sign-in ml-1"></i></button>
-              </div>
-              </form>
-            </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="options text-center text-md-right mt-1">
-
-              </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">닫기</button>
-            </div>
-
-          </div>
-          <!--/.Panel 6-->
-
-          <!--Panel 5-->
-          <div class="tab-pane fade in show" id="panel5" role="tabpanel">
-
-            <!--Body-->
-            <div class="modal-body mb-1">
-            <form action="" method="post" name="findIdfrm" id="findIdfrm">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-user prefix"></i>
-                <input type="text" id="nameFP" class="form-control form-control-sm validate">
-                <label>이름</label>
-              </div>
-
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="emailFP" class="form-control form-control-sm validate">
-                <label>이메일</label>
-              </div>
-			</form>
-            </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="options text-center text-md-right mt-1">
-                <small class="d-flex justify-content-start">아이디 찾기 결과</small>
-                <p class="d-flex justify-content-start">apple123</p>
-              </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">닫기</button>
-            </div>
-
-          </div>
-          <!--/.Panel 5-->
 
           <!--Panel 8-->
           <div class="tab-pane fade" id="panel8" role="tabpanel">

@@ -18,8 +18,32 @@ public class memberDAOImpl implements memberDAO{
 	private static final Logger logger = LoggerFactory.getLogger(MemRestController.class);
 	
 	//아이디 중복체크
-	
-	//메일 중복체크
+	@Override
+	public String getMemUserid(String userid){
+		logger.debug("dao -> mapper 데이터 요청 :: getMemUserid");
+		String getId = sqlSession.selectOne("getMemUserid", userid);
+		if(getId == null) {
+			getId = "";
+			logger.debug("getMemUserid mapper -> " + getId + " :: success");
+		}else {
+			logger.debug("getMemUserid mapper : " + getId + " :: fail");
+		}
+		return getId;
+	}
+
+	//메일 중복 체크
+	@Override
+	public String chkMemEmail(String email) {
+		logger.debug("dao -> mapper 데이터 요청  [" + email + "] :: chkMemEmail");
+		String chkMemEmail = sqlSession.selectOne("chkMemEmail", email);
+		if(chkMemEmail == null) {
+			chkMemEmail = "";
+			logger.info("chkMemEmail mapper -> [" + chkMemEmail + "] :: success");
+		}else {
+			logger.info("chkMemEmail mapper -> [" + chkMemEmail + "] :: fail");
+		}
+		return chkMemEmail;
+	}	
 	
 	//회원가입
 	@Override

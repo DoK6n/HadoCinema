@@ -2,34 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<!-- 
-
-CREATE TABLE MEMBERS
-(
-    mem_uid            NUMBER           NOT NULL, 
-    uesrid         VARCHAR2(20)     NOT NULL UNIQUE, 
-    userpw         VARCHAR2(20)     NOT NULL, 
-    name           VARCHAR2(20)     NOT NULL, 
-    email          VARCHAR2(100)    NOT NULL, 
-    phone          VARCHAR2(20)     NOT NULL, 
-    zipcode        VARCHAR2(20)     NOT NULL, 
-    address1       VARCHAR2(100)    NOT NULL, 
-    address2       VARCHAR2(100)    NOT NULL, 
-    signupdate    DATE             NOT NULL, 
-    status         CHAR(1)          NOT NULL, 
-
-    CONSTRAINT MEMBERS_PK PRIMARY KEY (mem_uid)
-);
- -->
- 
- 
- 
 <mapper namespace="memberMapper">
-	 
 	<!-- 중복체크 -->
+	<select id="getMemUserid" resultType="java.lang.String">
+		SELECT userid FROM MEMBERS WHERE userid = #{userid}
+	</select>
 	
 	<!-- 메일 중복 체크 -->
+	<select id="chkMemEmail" resultType="java.lang.String">
+		SELECT email FROM MEMBERS WHERE email= #{email}
+	</select>
 	
 	<!-- 회원 가입 -->
 	<insert id="register" parameterType="com.lec.dto.memberDTO">
@@ -47,12 +29,18 @@ CREATE TABLE MEMBERS
 	</select>
 	
 	<!-- 회원정보수정 -->
-	
+	<update id="updateMemInfo">
+		UPDATE MEMBERS 
+		SET userpw = #{userpw}, name=#{name}, email = #{email}, phone = #{phone}, 
+			zipcode = #{zipcode}, address1 = #{address1}, address2 = #{address2}
+		WHERE userid = #{userid}
+	</update>
 
 	<!-- 회원 정보 -->
-
-
-
-	
+	<select id="getMemInfo" resultType="com.lec.dto.memberDTO">
+		SELECT userid, name, email, phone, zipcode, 
+				address1, address2, signupdate, status
+		FROM MEMBERS WHERE userid = #{userid}
+	</select>
 </mapper>
 

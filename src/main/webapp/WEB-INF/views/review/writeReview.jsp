@@ -18,7 +18,7 @@
         <!-- Modal body -->
         <div class="modal-body">
        	<form name="writeForm" method="post" action="/review/writeReviewOk">
-			<input type="hidden" id="rMemId" name="rMemId" value="rMemId"/>
+			<input type="hidden" id="rMemId" name="rMemId" value="${login }"/>
 			<textarea id="rMovieName" name="rMovieName" cols="2" rows="2" placeholder="영화 제목을 입력해주세요"></textarea>
 
 			<div class="bx_score">

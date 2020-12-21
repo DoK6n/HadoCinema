@@ -18,9 +18,25 @@ public class memberServiceImpl implements memberService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemRestController.class);
 	//중복체크
+	@Override
+	public boolean getMemUserid(String userid) {
+		logger.debug("아이디 중복체크 :: service -> dao 요청");
+		String getId = dao.getMemUserid(userid);
+		if(!getId.equals("") && getId != null) return true;
+		
+		return false;
+	}
 	
 	//메일 중복 체크
-
+	@Override
+	public String chkMemEmail(String email){
+		logger.debug("chkMemEmail :: service -> dao 요청 ["+email+"]");
+		String getMail = dao.chkMemEmail(email);
+//		if(!getMail.equals("") && getMail != null) return getMail;
+		
+		return getMail;
+	}
+	
 	//회원가입
 	@Override
 	public boolean register(memberDTO dto){

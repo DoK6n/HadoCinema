@@ -84,15 +84,17 @@ $(document).ready(() => {
     // $(this).addClass('hidden');
 
     let chkEmail = $('#useremail').val();
-    console.log(chkEmail);
+    var isShown = $('#modalLRForm').hasClass('show');
     $.ajax({
       url: '/register/' + chkEmail,
       type: 'get',
       cache: false,
       success: function (data) {
-        console.log(data);
-        emailCheckMessage(data);
-        if (data == 'true') {
+        console.log('data : ' + data);
+        if(isShown){
+        	emailCheckMessage(data);
+        }
+        if (data != '') {
           $('#useremail').val('').focusout();
         }
       },
@@ -163,7 +165,7 @@ function emailCheckMessage(data) {
     email.focusin();
     return;
   }
-  if (data === 'false') {
+  if (data === '') {
     toastr.success('사용할수 있는 이메일입니다', '이메일 확인', {
       timeOut: 3000,
     });

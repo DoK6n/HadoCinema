@@ -16,6 +16,10 @@ public interface memberDAO {
 
 		public void updateMemInfo(memberDTO dto);
 
+		public String getMemUserid(String userid);
+
+		public String chkMemEmail(String email);
+
 		//회원정보수정
 
 //		//아이디찾기

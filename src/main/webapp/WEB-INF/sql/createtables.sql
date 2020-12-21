@@ -133,7 +133,7 @@ INSERT INTO MEMBERS(mem_uid, userid, userpw, name, email, phone, zipcode,
   	 	
 INSERT INTO MEMBERS(mem_uid, userid, userpw, name, email, phone, zipcode, 
 					address1, address2, signupdate, status)
-  	 VALUES(MEMBERS_SEQ.NEXTVAL, 'melon123', '0000', '김멜론', 'ban@gmail.com', '010-1111-2222', 
+  	 VALUES(MEMBERS_SEQ.NEXTVAL, 'melon123', '0000', '김멜론', 'mel@gmail.com', '010-1111-2222', 
   	 		'12123', '무왕로 1', '협곡아파트', SYSDATE, '1');
 
 INSERT INTO REVIEW(reviewUid, rMemId, rMovieName,  reviewContent, reviewGrade) 
@@ -158,7 +158,7 @@ INSERT INTO REVIEW(reviewUid, rMemId, rMovieName,  reviewContent, reviewGrade)
 VALUES(REVIEW_SEQ.nextval, 'banana123', '어벤져스 : 엔드게임', '마블 빅팬인데 마지막 장면 진짜 대박임..', 10);
 
 -- 회원목록, 아이디중복, 로그인, 회원정보, 
---SELECT * FROM MEMBERS;
+SELECT * FROM MEMBERS;
 SELECT * FROM REVIEW2;
 --DELETE * FROM REVIEW2;
 
