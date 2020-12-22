@@ -1,123 +1,11 @@
 @import url(font.css);
-/* div[class*="col"] {
-    border: 1px solid wheat;
-} */
+@import url(headStyle.css);
 
-/* div[class*="empty"] {    border: 1px solid white;
-} */
 
-body {
-	overflow-x: hidden;
-	overflow-y: auto;
-}
+a, a:hover{ color: black; }
 
-a:focus {
-    border: none;
-    outline: none;
-    
-}
-a, a:hover{
-    color: black;
-}
+.sub { background-color: #F8F8F8; }
 
-.dropdown:hover .sb1 {
-    display: block;
-    left: -39vw;
-}
-.dropdown:hover .sb2 {
-    display: block;
-    left: -46vw;
-}
-.dropdown:hover .sb3 {
-    display: block;
-    left: -56vw;
-}
-.dropdown:hover .sb4 {
-    display: block;
-    left: -65vw;
-}
-
-#login {
-    color: rgb(170, 170, 170);
-    text-decoration: none;
-    font-size: 11px;
-}
-
-#logID {
-    color: rgb(170, 170, 170);
-    text-decoration: none;
-    font-size: 11px;	
-}
-
-#postlabel {
-    margin-left: 46px;
-}
-
-#logo {
-    width: 30%;
-
-}
-
-#login:hover {
-    border-bottom: 2px solid rgb(211, 63, 63);
-}
-
-.menu:hover {
-    border-bottom: 2px solid rgb(211, 63, 63);
-    animation: fadein 0.8s;
-  -moz-animation: fadein 0.8s; /* Firefox */
-  -webkit-animation: fadein 0.8s; /* Safari and Chrome */
-  -o-animation: fadein 0.8s; /* Opera */
-}
-
-.submenu:hover {
-    font-weight: bolder;
-
-}
-ul{
-    list-style: none;
-}
-.sub li{
-    display: inline-block;
-    text-align:center;
-}
-
-.sub {
-    background-color: #F8F8F8;
-    border: none;
-    width: 98vw !important;
-    z-index: 3;
-}
-
-.sub li {
-    display: inline-block;
-    text-align: center;
-}
-
-.sb1 li:nth-child(1) {
-    margin-left: 38.5vw;
-}
-.sb2 li:nth-child(1) {
-    margin-left: 46.8vw;
-}
-.sb3 li:nth-child(1) {
-    margin-left: 55.6vw;
-}
-.sb4 li:nth-child(1) {
-    margin-left: 58vw;
-}
-
-.submenu {
-    font-size: smaller;
-    height: 2rem;
-    border: 0px;
-    margin-left: 50px;
-    animation: fadein 0.3s;
-  -moz-animation: fadein 0.3s; /* Firefox */
-  -webkit-animation: fadein 0.3s; /* Safari and Chrome */
-  -o-animation: fadein 0.3s; /* Opera */
-    
-}
 @keyframes fadein {
     from {opacity: 0.5;}
     to {opacity: 1;}
@@ -134,43 +22,9 @@ ul{
     from {opacity: 0.5;}
     to {opacity: 1;}
 }
+
 .menu {
-    height: 3rem;
     background-color: white;
-    border: 0px;
-    text-align: center;
     color: black;
-    font-size: 1rem;
     padding-top: 0.9rem;
-}
-
-body::-webkit-scrollbar {
-    width: 10px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: #eceff1;
-    border-radius: 10px;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 0px rgba(255, 255, 255, 0);
-}
-
-
-#modalLRForm::-webkit-scrollbar {
-    width: 10px;
-}
-
-#modalLRForm::-webkit-scrollbar-thumb {
-    background-color: #e0f7fa73;
-    border-radius: 10px;
-}
-
-#modalLRForm::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 0px rgba(255, 255, 255, 0);
 }

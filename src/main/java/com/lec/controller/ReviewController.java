@@ -28,7 +28,7 @@ public class ReviewController {
 	}
 	
 	
-	// 게시판 글 작성	
+	// 게시판 글 작성
 	@RequestMapping(value = "/review/writeReviewOk", method = RequestMethod.POST)
 	public String writeReviewOk(ReviewDTO reviewDTO) throws Exception{
 		

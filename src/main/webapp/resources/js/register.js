@@ -6,10 +6,24 @@ const password = document.querySelector('#password');
 const loginButton = document.querySelector('.loginButton');
 //register form
 const regOk = document.getElementById('regOk');
-const id = document.getElementById('userid');
-const email = document.getElementById('useremail');
 const logout = document.querySelector('.logout');
 let idFlag = false;
+
+// 회원가입
+const userid = document.getElementById('userid');
+const userpw = document.getElementById('userpw');
+const username = document.getElementById('name');
+const phone = document.getElementById('phone');
+const email = document.getElementById('useremail');
+const zipcode = document.getElementById('zipcode');
+const address1 = document.getElementById('address1');
+const address2 = document.getElementById('address2');
+
+// 정규식
+const expPwText = /^.*(?=^.{4,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()+=]).*$/;
+const expNameText = /[가-힣]+$/;
+const expHpText = /^\d{3}-\d{3,4}-\d{4}$/;
+const expEmailText = /^[A-Za-z0-9\.\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z0-9\.\-]+$/;
 
 //toaster alert
 toastr.options = {
@@ -58,49 +72,37 @@ $(document).ready(() => {
   });
 
   //register form userid focusout시 ajax로 restcontroller로 data 전송
+  //if (!$('#userid').val() && $('#userid').val() != '') {
   $('#userid').focusout(function () {
-
-    // $(this).addClass('hidden');
-
-    let chkId = $('#userid').val();
+    const isShown = $('#modalLRForm').hasClass('show');
     $.ajax({
-      url: '/member/' + chkId,
+      url: contextPath + '/member/' + userid.value,
       type: 'get',
       cache: false,
       data: {
-        id: chkId
+        id: userid.value
       },
       success: function (data) {
-        console.log(data);
-        idCheckMessage(data);
-        if (data == 'true') {
-          $('#userid').val('');
-        }
+        if (isShown) idCheckMessage(data);
+        if (data == 'true') $('#userid').val('').focusout();
       },
     });
   });
+  //}
 
   $('#useremail').focusout(function () {
-    // $(this).addClass('hidden');
-
-    let chkEmail = $('#useremail').val();
-    var isShown = $('#modalLRForm').hasClass('show');
+    const isShown = $('#modalLRForm').hasClass('show');
     $.ajax({
-      url: '/register/' + chkEmail,
+      url: contextPath + '/register/' + email.value,
       type: 'get',
       cache: false,
       success: function (data) {
         console.log('data : ' + data);
-        if(isShown){
-        	emailCheckMessage(data);
-        }
-        if (data != '') {
-          $('#useremail').val('').focusout();
-        }
+        if (isShown) emailCheckMessage(data);
+        if (data != '')  $('#useremail').val('').focusout();
       },
     });
   });
-
   //가입하기 버튼
   regOk.addEventListener('click', function () {
     console.log("가입 시도!");
@@ -113,10 +115,9 @@ $(document).ready(() => {
 
 function login() {
   const loginForm = $('#loginForm').serialize(); // serialize 사용
-  console.log(loginForm);
 
   $.ajax({
-    url: "login",
+    url: contextPath + "/login",
     type: "POST",
     cache: false,
     data: loginForm,
@@ -134,10 +135,11 @@ function login() {
 }
 
 function idCheckMessage(data) {
-  if (id.value.length < 3) {
+  if (userid.value.length < 3) {
     toastr.error('최소 4글자 이상의 아이디를 입력해 주세요', '아이디 확인', {
       timeOut: 3000,
     });
+    $('#userid').val('').focusout();
     return;
   }
   if (data === 'false') {
@@ -162,7 +164,7 @@ function emailCheckMessage(data) {
     toastr.error('이메일 형식을 확인하세요.', '이메일 형식', {
       timeOut: 3000,
     });
-    email.focusin();
+    $('#useremail').val('').focusout();
     return;
   }
   if (data === '') {
@@ -181,14 +183,12 @@ function emailCheckMessage(data) {
 
 function submit() {
   //sendit -> 회원가입 유효성검사 return값 flase시 가입실패 true시 ajax로 restcontroller로 데이터 전송
-  if (!sendit()) {
-    console.log('가입 실패!');
-
-  } else {
-    let formData = $('#regform').serialize(); // serialize 사용
+  if (!sendit()) console.log('가입 실패!');
+  else {
+    const formData = $('#regform').serialize(); // serialize 사용
 
     $.ajax({
-      url: "register",
+      url: contextPath + "register",
       type: "POST",
       cache: false,
 
@@ -199,6 +199,8 @@ function submit() {
         toastr.success('회원가입 성공!', '회원가입', {
           timeOut: 3000,
         });
+        $('.close-btn').click();
+        location.reload();
         $('#userid').focusin().val('').focusout();
         $('#userpw').focusin().val('').focusout();
         $('#name').focusin().val('').focusout();
@@ -207,6 +209,7 @@ function submit() {
         $('#zipcode').focusin().val('').focusout();
         $('#address1').focusin().val('').focusout();
         $('#address2').focusin().val('').focusout();
+        
       },
       error: function (request, status, error) {
         console.log(error);
@@ -217,24 +220,6 @@ function submit() {
 
 // 유효성 검사 return boolean
 function sendit() {
-  console.log("sendit() 클릭");
-  // document.querySelector()
-  // 회원가입
-  const userid = document.getElementById('userid');
-  const userpw = document.getElementById('userpw');
-  const name = document.getElementById('name');
-  const phone = document.getElementById('phone');
-  const email = document.getElementById('useremail');
-  const zipcode = document.getElementById('zipcode');
-  const address1 = document.getElementById('address1');
-  const address2 = document.getElementById('address2');
-
-  // 정규식
-  const expPwText = /^.*(?=^.{4,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()+=]).*$/;
-  const expNameText = /[가-힣]+$/;
-  const expHpText = /^\d{3}-\d{3,4}-\d{4}$/;
-  const expEmailText = /^[A-Za-z0-9\.\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z0-9\.\-]+$/;
-
   if (userid.value == '') {
     toastr.error('아이디를 입력하세요.', '아이디', {
       timeOut: 3000,
@@ -264,11 +249,11 @@ function sendit() {
     userpw.focusin();
     return false;
   }
-  if (expNameText.test(name.value) == false) {
+  if (expNameText.test(username.value) == false) {
     toastr.error('이름 형식을 확인하세요.', '이름 형식', {
       timeOut: 3000,
     });
-    name.focusin();
+    username.focusin();
     return false;
   }
   if (expHpText.test(phone.value) == false) {

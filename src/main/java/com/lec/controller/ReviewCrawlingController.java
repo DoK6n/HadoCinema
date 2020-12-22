@@ -34,7 +34,7 @@ public class ReviewCrawlingController {
          String url = "https://movie.naver.com/movie/point/af/list.nhn?&page="+ p;
 
       try {
-         // 영화 리뷰 정보 스크래핑
+    	// 영화 리뷰 정보 스크래핑
           doc = Jsoup.connect(url).get();
          /* Elements */
            Elements reviewInfo = doc.select(".title");

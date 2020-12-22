@@ -1,16 +1,19 @@
-<%@ page language="java" contentType="javascript; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<script>
-
 'use strict';
 //mypage form
 const updateOk = document.getElementById('updateOk');
+// 마이페이지
+const username = document.getElementById('myname');
+const userpw = document.getElementById('mypw');
+const phone = document.getElementById('myphone');
 const email = document.getElementById('myemail');
-
-
+const zipcode = document.getElementById('myzipcode');
+const address1 = document.getElementById('myaddress1');
+const address2 = document.getElementById('myaddress2');
+// 정규식
+const expPwText = /^.*(?=^.{4,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()+=]).*$/;
+const expNameText = /[가-힣]+$/;
+const expHpText = /^\d{3}-\d{3,4}-\d{4}$/;
+const expEmailText = /^[A-Za-z0-9\.\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z0-9\.\-]+$/;
 //toaster alert
 toastr.options = {
   positionClass: 'toast-top-full-width',
@@ -19,10 +22,9 @@ toastr.options = {
 };
 
 $(document).ready(() => {
-
   //modal창 close시 text 초기화
   $('.modal').on('hidden.bs.modal', function (e) {
-	  
+
     $('form').each(function () {
       this.reset();
       $('#mypw').focusin().focusout();
@@ -34,28 +36,21 @@ $(document).ready(() => {
       $('#myaddress2').focusin().focusout();
     });
   });
-  
-  
+
   $('#myemail').focusout(function () {
-    // $(this).addClass('hidden');
-	var isShown = $('#mypageMForm').hasClass('show');
+    var isShown = $('#mypageMForm').hasClass('show');
     let chkEmail = $('#myemail').val();
-    let loginEmail = '${email }';
     $.ajax({
-      url: '/register/' + chkEmail,
+      url: contextPath + '/register/' + chkEmail,
       type: 'get',
       cache: false,
       success: function (data) {
-        console.log('data : '+data);
-        if(isShown){
-        	emailCheckMessage(data, loginEmail);
-        }
-        if (data != '' && data != loginEmail) {
-          $('#myemail').val('').focusout();
-        }
+        console.log('data : ' + data);
+        if (isShown) emailCheckMessage(data, loginEmail);
+        if (data != '' && data != loginEmail) $('#myemail').val('').blur();
       },
+    });
   });
-});
   //정보수정 버튼
   updateOk.addEventListener('click', function () {
     submit();
@@ -67,39 +62,38 @@ $(document).ready(() => {
 function emailCheckMessage(data, loginEmail) {
   const expEmailText = /^[A-Za-z0-9\.\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z0-9\.\-]+$/;
   if (expEmailText.test(email.value) == false) {
-	  toastr.error('이메일 형식을 확인하세요.', '이메일 형식', {
-		  timeOut: 3000,
-	  });
-	  email.focusin();
-	  return;
+    toastr.error('이메일 형식을 확인하세요.', '이메일 형식', {
+      timeOut: 3000,
+    });
+    email.focusin();
+    return;
   }
   if (data === '' && data != loginEmail) {
-	  toastr.success('사용할수 있는 이메일입니다', '이메일 확인', {
-		  timeOut: 3000,
-	  });
-	  return;
-  }else if(data !== '' && data != loginEmail){
-	  toastr.error('이미 존재하는 이메일입니다', '이메일 확인', {
-		  timeOut: 3000,
-	  });
-	  return;
-  } else if(data === loginEmail){
-	  toastr.success('현재 이메일과 동일합니다.', '이메일 확인', {
-		  timeOut: 3000,
-	  });
-	  return;
+    toastr.success('사용할수 있는 이메일입니다', '이메일 확인', {
+      timeOut: 3000,
+    });
+    return;
+  } else if (data !== '' && data != loginEmail) {
+    toastr.error('이미 존재하는 이메일입니다', '이메일 확인', {
+      timeOut: 3000,
+    });
+    return;
+  } else if (data === loginEmail) {
+    toastr.success('현재 이메일과 동일합니다.', '이메일 확인', {
+      timeOut: 3000,
+    });
+    return;
   }
 } //end emailCheckMessage
 
 function submit() {
   //sendit -> 마이페이지 정보수정 유효성검사 return값 flase시 가입실패 true시 ajax로 restcontroller로 데이터 전송
-  if (!sendit()) {
-    console.log('수정 실패!');
-  } else {
+  if (!sendit()) console.log('수정 실패!');
+  else {
     const formData = $('#updateform').serialize(); // serialize 사용
 
     $.ajax({
-      url: "update",
+      url: contextPath + "update",
       type: "POST",
       cache: false,
 
@@ -109,6 +103,7 @@ function submit() {
         toastr.success('내 정보 수정 성공!', '마이페이지', {
           timeOut: 3000,
         });
+        $('.close-btn').click();
         location.reload();
         $('#mypw').focusin().focusout();
         $('#myname').focusin().focusout();
@@ -128,20 +123,6 @@ function submit() {
 // 유효성 검사 return boolean
 function sendit() {
   console.log("sendit() 클릭");
-  // 마이페이지
-  const name = document.getElementById('myname');
-  const userpw = document.getElementById('mypw');
-  const phone = document.getElementById('myphone');
-  const email = document.getElementById('myemail');
-  const zipcode = document.getElementById('myzipcode');
-  const address1 = document.getElementById('myaddress1');
-  const address2 = document.getElementById('myaddress2');
-
-  // 정규식
-  const expPwText = /^.*(?=^.{4,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()+=]).*$/;
-  const expNameText = /[가-힣]+$/;
-  const expHpText = /^\d{3}-\d{3,4}-\d{4}$/;
-  const expEmailText = /^[A-Za-z0-9\.\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z0-9\.\-]+$/;
 
   if (userpw.value == '') {
     toastr.error('비밀번호를 입력하세요.', '비밀번호 입력', {
@@ -157,11 +138,11 @@ function sendit() {
     userpw.focusin();
     return false;
   }
-  if (expNameText.test(name.value) == false) {
+  if (expNameText.test(username.value) == false) {
     toastr.error('이름 형식을 확인하세요.', '이름 형식', {
       timeOut: 3000,
     });
-    name.focusin();
+    username.focusin();
     return false;
   }
   if (expHpText.test(phone.value) == false) {
@@ -231,4 +212,3 @@ function daumPostcode() {
     }
   }).open();
 }
-</script>

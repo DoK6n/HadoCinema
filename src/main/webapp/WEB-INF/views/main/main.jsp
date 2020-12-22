@@ -77,19 +77,20 @@
     <!--/.Controls-->
   </div>
   <!--/.Carousel Wrapper-->
-<c:if test="${login ne 'admin' }">
-	<c:choose>
-		<c:when test="${empty login}">
-			<script src="${pageContext.request.contextPath }/resources/js/register.js"></script>
-		</c:when>
-		<c:otherwise>
-			<!-- 
+  <c:if test="${login ne 'admin' }">
+	  <script type="text/javascript">
+		  let contextPath = '${pageContext.request.contextPath }';
+		  let loginEmail = '${email }';
+	  </script>
+	  <c:choose>
+		  <c:when test="${empty login}">
+	  		  <script src="${pageContext.request.contextPath }/resources/js/register.js"></script>
+		  </c:when>
+		  <c:otherwise>
 			 <script src="${pageContext.request.contextPath }/resources/js/mypage.js"></script>
-			 -->
-			<jsp:include page="${pageContext.request.contextPath }/resources/js/mypage.jsp"></jsp:include>
-		</c:otherwise>
-	</c:choose>
-</c:if>
+  		  </c:otherwise>
+	  </c:choose>
+  </c:if>
 
 </body>
 </html>

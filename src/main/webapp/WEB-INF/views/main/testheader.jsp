@@ -16,10 +16,34 @@
 </head>
 
 <body>
- <jsp:include page="../memberModals.jsp"></jsp:include>
+  <c:if test="${login ne 'admin' }">
+	<c:choose>
+		<c:when test="${empty login}">
+			<jsp:include page="../memberModals.jsp"></jsp:include>
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="../mypageModals.jsp"></jsp:include>
+		</c:otherwise>
+	</c:choose>
+  </c:if>
  <jsp:include page="../review/writeReview.jsp"></jsp:include>
  <jsp:include page="../header.jsp"></jsp:include>
-<script src="${pageContext.request.contextPath }/resources/js/register.js"></script>
+
+  <c:if test="${login ne 'admin' }">
+	  <script type="text/javascript">
+		  let contextPath = '${pageContext.request.contextPath }';
+		  let loginEmail = '${email }';
+	  </script>
+	  <c:choose>
+		  <c:when test="${empty login}">
+	  		  <script src="${pageContext.request.contextPath }/resources/js/register.js"></script>
+		  </c:when>
+		  <c:otherwise>
+			 <script src="${pageContext.request.contextPath }/resources/js/mypage.js"></script>
+  		  </c:otherwise>
+	  </c:choose>
+  </c:if>
+  
 </body>
 
 </html>

@@ -94,7 +94,7 @@ aria-hidden="true">
             <!--Footer-->
             <div class="modal-footer">
             <label>가입일 : ${signupdate }</label>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">닫기</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto close-btn" data-dismiss="modal">닫기</button>
             </div>
           </div>
 

@@ -4,28 +4,19 @@ import com.lec.dto.memberDTO;
 
 public interface memberDAO {
 	
-		//아이디 중복체크
+	//userid double check
+	public String getMemUserid(String userid);
 
-		//메일 중복 체크
-	
-		//회원가입
-		public boolean register(memberDTO dto);
+	//email double check
+	public String chkMemEmail(String email);
 
-		//로그인
-		public memberDTO login(memberDTO dto);
+	public boolean register(memberDTO dto);
+		
+	public memberDTO login(memberDTO dto);
 
-		public void updateMemInfo(memberDTO dto);
+	//update member info
+	public void updateMemInfo(memberDTO dto);
 
-		public String getMemUserid(String userid);
 
-		public String chkMemEmail(String email);
 
-		//회원정보수정
-
-//		//아이디찾기
-//		public String findMemUserid(memberDTO dto);
-//		//비밀번호찾기
-//		public String findMemUserpw(memberDTO dto);
-//		//탈퇴하기
-//		public void withdrawMem(memberDTO dto);
 }

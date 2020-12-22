@@ -66,7 +66,7 @@ aria-hidden="true">
               <form name="regform" id="regform" method="post" action="">
                 <div class="md-form form-sm mb-5">
                   <i class="fas fa-user prefix"></i>
-                  <input type="text" id="userid" name="userid" class="form-control form-control-sm validate">
+                  <input type="text" id="userid" name="userid" class="form-control form-control-sm validate" value="">
                   <label for="userid">아이디</label>
                 </div>
 
@@ -127,7 +127,7 @@ aria-hidden="true">
             </div>
             <!--Footer-->
             <div class="modal-footer">
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">닫기</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto close-btn" data-dismiss="modal">닫기</button>
             </div>
           </div>
 
