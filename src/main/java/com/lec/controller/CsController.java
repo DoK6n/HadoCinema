@@ -1,6 +1,11 @@
 package com.lec.controller;
 
 import javax.inject.Inject;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +23,8 @@ public class CsController {
 	@Inject
 	CsService service;
 	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	// 게시판 글 작성 화면 , cs - qanda.jsp
 	
@@ -60,7 +67,34 @@ public class CsController {
 		return "/mypage/qandaView2";
 	}
 	
-	// 게시판 글 작성/mypage/answerOk [관리자]
+	// 게시판 글 작성/mypage/answerOk [관리자
+	@RequestMapping(value = "/mypage/answerOk", method = RequestMethod.POST)
+	public String answerOk(CsDTO csDTO) throws Exception{
+		
+		service.answer(csDTO);	
+		  
+		   String setfrom = "hd04mail@gmail.com";         
+		   String tomail  = csDTO.getCs_memid();   // 받는 사람 이메일
+		   String title   = "해도시네마에서 문의 답변 보내드립니다.";      // 제목
+		   String answer = csDTO.getCs_answer();
+		   String content = csDTO.getCs_subject() + "\r\n" + csDTO.getCs_content()+ "\r\n==========답변==========\r\n"+ answer ;		   
+		   
+		   try {
+			     MimeMessage message = mailSender.createMimeMessage();
+			     MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+			     messageHelper.setFrom(setfrom);  // 보내는사람 이메일
+			     messageHelper.setTo(tomail);     // 받는사람 이메일
+			     messageHelper.setSubject(title); 
+			     messageHelper.setText(content);  // 메일 내용
+			    
+			     mailSender.send(message);
+			   } catch(Exception e){
+			     System.out.println(e);
+			   }
+		   
+		return "redirect:/mypage/qandaList2";
+	}
 	
 }
 	

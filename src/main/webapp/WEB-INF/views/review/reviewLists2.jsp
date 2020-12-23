@@ -73,72 +73,72 @@
 							     <c:when test="${list.reviewGrade2 == 1}">
 							     
 							     <div class="starRev">
-			 					 <span class="star half">별1</span>
+			 					 <span class="starL half">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 2}">
 							     <div class="starRev">  
-			 					 <span class="star">별2</span>
+			 					 <span class="starL">별2</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 3}">
 							     <div class="starRev">
-			 					 <span class="star">별1</span>
-			 					 <span class="star half">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL half">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 4}">
 			                     <div class="starRev">		     
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 5}">
 			                     <div class="starRev">		     
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star half">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL half">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 6}">
 			                     <div class="starRev">		     
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 7}">
 			                     <div class="starRev">		     
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star half">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL half">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 8}">
 			                     <div class="starRev">		     
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 9}">
 			                     <div class="starRev">		     
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star half">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL half">별1</span>
 						     	 </div>
 								 </c:when>
 							     <c:when test="${list.reviewGrade2 == 10}">
 			                     <div class="starRev">		     
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
-			 					 <span class="star">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
+			 					 <span class="starL">별1</span>
 						     	 </div>
 								 </c:when>
 			                    </c:choose>
@@ -155,12 +155,12 @@
 					<div class="col-md-offset-3">
 						<ul class="pagination">
 							<c:if test="${pageMaker.prev}">
-								<li><a href="reviewLists2${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+								<li><a href="reviewLists2${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전&nbsp;&nbsp;</a></li>
 							</c:if> 
 							
 							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 								<li <c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
-								<a href="reviewLists2${pageMaker.makeSearch(idx)}">${idx}</a></li>
+								<a href="reviewLists2${pageMaker.makeSearch(idx)}">${idx}&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
 							</c:forEach>
 							
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">

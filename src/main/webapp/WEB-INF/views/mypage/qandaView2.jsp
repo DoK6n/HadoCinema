@@ -71,8 +71,8 @@
 				</div>
 						
 				<div>
-					<button class="update_btn" type="submit">답변작성</button>	
-					<button type="button" class="cancel_btn btn btn-warning">목록</button>
+					<button class="update_btn btn btn-success" type="submit">답변작성</button>	
+					<button type="button" class="cancel_btn btn btn-warning" onclick= "history.back()">목록</button>
 				</div>				
 			</form>
 		</section>

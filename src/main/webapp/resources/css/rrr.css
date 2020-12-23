@@ -37,7 +37,7 @@ body{
     font-style: bold!important;
 }
 
-.star{
+.starL{
   background-image: url("../image/staron.png");	
   background-size: auto 100%;
   width: 30px;
@@ -48,7 +48,7 @@ body{
   border : 0;
 }
 
-.star.half{
+.starL.half{
     background-image: url("../image/starhalf.png");	
 }
 

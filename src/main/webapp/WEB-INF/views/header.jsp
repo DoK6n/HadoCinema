@@ -47,8 +47,10 @@
         <ul class="justify-content-center dropdown-menu sub sb1">
           <li><a href="${pageContext.request.contextPath }/review/reviewLists2" class="grey-text submenu">리뷰 크롤링</a></li>
           <c:if test="${not empty login}">
-          	<li><a href="${pageContext.request.contextPath }/review/reviewLists" class="grey-text submenu">해도시네마 리뷰</a></li>
-          	<a href="${pageContext.request.contextPath }/review/writeReview" class="grey-text submenu" data-toggle="modal" data-target="#myModal">리뷰 작성</a>
+          	<li><a href="${pageContext.request.contextPath }/review/reviewLists" class="grey-text submenu">해도시네마 리뷰</a></li>     	     
+      		 <%if(!uri.equals("/cs/qanda")){ %>
+          	<li><a href="${pageContext.request.contextPath }/review/writeReview" class="grey-text submenu" data-toggle="modal" data-target="#myModal">리뷰 작성</a></li>
+          	<%}%>
           </c:if>
         </ul>
       </li>

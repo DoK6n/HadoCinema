@@ -58,11 +58,11 @@
 					<div>
  						<ul>
 					    <c:if test="${pageMaker.prev}">
-    						<li><a href="qandaList2${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+    						<li><a href="qandaList2${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전&nbsp;&nbsp;</a></li>
   						</c:if> 
 
     					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-    						<li><a href="qandaList2${pageMaker.makeQuery(idx)}">${idx}</a></li>
+    						<li><a href="qandaList2${pageMaker.makeQuery(idx)}">${idx}&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
 					    </c:forEach>
 
 

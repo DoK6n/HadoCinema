@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>해도시네마 영화 리뷰 사이트</title>
  <jsp:include page="../cdn.jsp"></jsp:include>
 <link href="${pageContext.request.contextPath }/resources/css/main_top.css" rel="stylesheet">
 
